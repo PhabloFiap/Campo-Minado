@@ -19,7 +19,7 @@ class Cell:
             location,
             width=12,
             height=4,
-            text=f"{self.i}, {self.j}"
+
 
 
         )
@@ -37,10 +37,10 @@ class Cell:
         for cell in Cell.all:
             if cell.i == i and cell.j == j:
                 return cell
-                
 
-    def show_cell(self):
-        lista_de_celulas = [
+    @property
+    def lista_de_celulas (self):
+         celula = [
             self.pega_celula_por_eixo(self.i -1, self.j -1),
             self.pega_celula_por_eixo(self.i -1, self.j),
             self.pega_celula_por_eixo(self.i -1, self.j +1),
@@ -52,8 +52,21 @@ class Cell:
             self.pega_celula_por_eixo(self.i +1, self.j +1),
             self.pega_celula_por_eixo(self.i, self.j +1),
         ]
-        lista_de_celulas = [i for i in lista_de_celulas]
-        print (lista_de_celulas)
+         celula = [i for i  in celula if i is not None]
+         return celula
+        
+    @property
+    def lista_de_celulas_length (self):
+        contador = 0
+        for i in self.lista_de_celulas:
+            if i.is_mine:
+                contador += 1
+            return contador
+
+
+    def show_cell(self):
+       
+        self.cell_btn_object.configure (text=self.lista_de_celulas_length)
       
 
 
