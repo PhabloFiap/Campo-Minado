@@ -2,6 +2,7 @@ from tkinter import *
 from cell import Cell
 import settings
 import util
+import random
 
 root = Tk() #instanciando um objeto pois sera uma janela
 root.configure(bg="black") #pintando o fundo
